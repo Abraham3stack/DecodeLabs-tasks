@@ -42,7 +42,12 @@
       <div class="hero-content">
         <h1>Smarter Healthcare Starts Here</h1>
         <p>Manage appointments, access medical records, and take control of your health, all in one place.</p>
-        <button type="button" class="btn" aria-label="Get started with HealthSync">Get Started</button>
+        <button 
+          id="get-started-btn" 
+          type="button" 
+          class="btn" 
+          aria-label="Get started with HealthSync"
+        >Get Started</button>
       </div>
       <div class="hero-image">
         <img src="assets/hero.webp" alt="Healthcare dashboard interface" width="600" height="400">
@@ -116,6 +121,12 @@
         <button type="submit" class="btn">Send Message</button>
         <p id="formStatus" class="form-status"></p>
       </form>
+    </section>
+
+    <!-- APPOINTMENTS SECTION -->
+    <section class="appointments container">
+      <h2>Appointments</h2>
+      <div id="appointments-list"></div>
     </section>
 
   </main>

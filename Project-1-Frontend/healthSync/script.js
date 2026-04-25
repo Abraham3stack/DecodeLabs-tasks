@@ -70,6 +70,21 @@ document.querySelectorAll(".nav-links a").forEach(link => {
   });
 });
 
+// Get started button
+const getStartedBtn = document.getElementById("get-started-btn");
+
+getStartedBtn.addEventListener("click", () => {
+  const contactSection = document.getElementById("contact");
+
+  contactSection.scrollIntoView({
+    behavior: "smooth"
+  });
+
+  setTimeout(() => {
+    document.getElementById("name").focus();
+  }, 500);
+});
+
 // Form handling
 const form = document.querySelector(".contact-form");
 const response = document.getElementById("formStatus");
@@ -108,6 +123,7 @@ form.addEventListener("submit", async (e) => {
     response.className = "form-status success";
 
     form.reset();
+    getAppointments();
   } catch (error) {
     // Error UI
     response.textContent = error.message || "Something went wrong";
@@ -117,3 +133,47 @@ form.addEventListener("submit", async (e) => {
     button.textContent = "Send Message";
   }
 });
+
+// GetAppointments function
+async function getAppointments() {
+  const container = document.getElementById("appointments-list");
+
+  if (!container) return; // prevent crash if element not found
+
+  container.innerHTML = "<p>Loading appointments...</p>";
+
+  try {
+    const response = await fetch("http://localhost:5001/api/appointments");
+    const result = await response.json();
+
+    const appointments = result.data;
+
+    if (!appointments || appointments.length === 0) {
+      container.innerHTML = "<p>No appointments yet.</p>";
+      return;
+    }
+
+    container.innerHTML = "";
+
+    appointments.forEach((appt) => {
+      const div = document.createElement("div");
+
+      div.classList.add("appointment-card");
+
+      div.innerHTML = `
+        <h4>${appt.name}</h4>
+        <p><strong>Email:</strong> ${appt.email}</p>
+        <p><strong>Date:</strong> ${new Date(appt.date).toLocaleDateString()}</p>
+        <p>${appt.message}</p>
+      `;
+
+      container.appendChild(div);
+    });
+
+  } catch (error) {
+    container.innerHTML = "<p style='color:red;'>Failed to load appointments</p>";
+    console.error("Error fetching appointments:", error);
+  }
+}
+
+getAppointments();

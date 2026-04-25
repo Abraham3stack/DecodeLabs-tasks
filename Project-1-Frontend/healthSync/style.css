@@ -289,6 +289,20 @@ textarea {
   color: red;
 }
 
+/* Appointment Card */
+.appointment-card {
+  background: #e4e9f2;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.appointments h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
 /*==== Footer ====*/
 .footer {
   background: var(--dark);

@@ -15,12 +15,13 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use("/api/appointments", appointmentRoutes);
 
 // Test route
 app.get("/", (req, res) => {
   res.send("HealthSync API is running...");
 });
+
+app.use("/api/appointments", appointmentRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5001;

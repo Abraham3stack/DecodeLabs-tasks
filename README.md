@@ -49,6 +49,26 @@ Project-2-Backend/healthsync-backend/
 
 ---
 
+### 🟡 Project 4 – Frontend & Backend Integration
+- Connected frontend to backend using **Fetch API (async/await)**
+- Enabled communication between client and server using **CORS**
+- Implemented real-time data flow:
+  - Form submission → API → Database
+  - Fetch data → Display dynamically on UI
+
+Key features:
+- API integration using `fetch`
+- Dynamic rendering of appointments on the UI
+- Loading, empty, and error states handling
+- Automatic UI update after form submission
+
+📁 Folder:
+```
+Project-1-Frontend/healthSync/ (integration in script.js)
+```
+
+---
+
 ## ⚙️ Tech Stack
 
 - HTML, CSS, JavaScript
